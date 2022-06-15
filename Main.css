@@ -9,6 +9,18 @@
 
 https://media.discordapp.net/attachments/880439497211408384/986471746515378196/901811.png?width=631&height=406
 
+@advanced dropdown tool "Tools sliding animation"       {
+    tool_off    "off"   <<<EOT /* EOT;
+    tool_on     "on*"   <<<EOT  EOT;
+}
+@advanced dropdown chan "Channels sliding animation"    {
+    chan_off    "off"   <<<EOT /* EOT;
+    chan_on     "on*"   <<<EOT  EOT;
+}
+@advanced dropdown mem "Members sliding animation"      {
+    mem_off     "off"   <<<EOT /* EOT;
+    mem_on      "on*"   <<<EOT  EOT;
+}
 
 @advanced       text        backgroundImage         "Background Image Link"                 https://i.imgur.com/iIWiT7D.gif
 
@@ -45,8 +57,6 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
 
 @advanced       color       pop-up                   "Pop-ups bg"                           rgba(0, 0, 0, .2);
 ==/UserStyle== */
-
-
 @-moz-document domain("discord.com") {
 /*---------------------------------------- BACKGROUND ----------------------------------------*/
 body {
@@ -175,5 +185,61 @@ body {
     }
 
 
-    
+/*------------------------------Sidebar Hover--------------------------------- */
+    /*Channels Animation*/
+    /*[[chan]]*/[class|=sidebar]        {
+        opacity: 0;
+        width: 15px !important;
+        -webkit-transition: opacity 0.3s ease-in-out, width 0.5s !important;
+        -moz-transition: opacity 0.3s ease-in-out !important;
+        -ms-transition: opacity 0.3s ease-in-out !important;
+        -o-transition: opacity 0.3s ease-in-out !important;
+    }
+    [class|=sidebar]:hover  {
+        opacity: 1;
+        width: 240px !important;
+    }
+    /*Members Animation*/
+
+    /*[[mem]]*/[class|=membersWrap]     {
+        opacity: 0;
+        width: 10px;
+        min-width: 40px;
+        -webkit-transition: opacity 0.3s ease-in-out, width 0.5s !important;
+        -moz-transition: opacity 0.3s ease-in-out !important;
+        -ms-transition: opacity 0.3s ease-in-out !important;
+        -o-transition: opacity 0.3s ease-in-out !important;
+    }
+    [class|=membersWrap]:hover {
+        opacity: 1;
+        width: 240px !important;
+    }
+/*------------------------------Tool Bar Hover--------------------------------- */
+    /*hover == false*/
+   /*[[tool]]*/ [class^="toolbar-"]         {
+        max-width: 40px;
+        transition: max-width 1.5s;
+        -webkit-transition: max-width 1.5s;
+        -moz-transition: max-width 1.5s;
+        -o-transition: max-width 1.5s;
+        height: 100%;
+    }
+
+    [class^="toolbar-"]::before {
+        content: "︙";
+        font-size: 24px;
+        margin: 0 8px;
+    }
+    /*hover == true*/
+    [class^="toolbar-"]:hover   {
+        max-width: 100vw;
+    }
+
+    [class^="toolbar-"]:hover::before   {
+        content: "<";
+        font-size: 24px;
+        margin: 0 8px;
+     }
 }
+    
+    
