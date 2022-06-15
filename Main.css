@@ -1,0 +1,179 @@
+/* ==UserStyle==
+@name           Custom Discord
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    Custom discord the ability to edit discord to your preferences(basically)
+@author         Rejuiin
+@license        CC-BY-SA 4.0
+
+
+https://media.discordapp.net/attachments/880439497211408384/986471746515378196/901811.png?width=631&height=406
+
+
+@advanced       text        backgroundImage         "Background Image Link"                 https://i.imgur.com/iIWiT7D.gif
+
+@advanced       color       bg-primary              "Backgorund Primary"                    rgba(0, 0, 0, .1);
+@advanced       color       bg-secondary            "Backgorund Secondary"                  rgba(0, 0, 0, .1);
+@advanced       color       bg-tertiary             "Backgorund Tertiary"                   rgba(0, 0, 0, .1);
+@advanced       color       bg-accent               "Backgorund Accent"                     rgba(0, 0, 0, .65);
+@advanced       color       bg-floating             "Backgorund Floating"                   rgba(0, 0, 0, .9);
+@advanced       color       bg-secondary-alt        "Backgorund Secondary-ALT(user)"        rgba(0, 0, 0, .3);
+@advanced       color       bg-message-bar          "Backgorund Message bar"                rgba(0, 0, 0, .5);
+@advanced       color       scroll-bar              "Scroll Bar"                            rgba(28, 28, 28, 1);
+@advanced       color       scroll-track            "Scroll Track"                          rgba(117, 116, 116, .4);
+
+@advanced       color       hd-primary              "Headers Primary"                       #fff;
+@advanced       color       hd-secondary            "Headers Secondary"                     #b9bbbe;
+@advanced       color       text-normal             "Text Normal"                           #dcddde;
+@advanced       color       text-muted              "Text Muted"                            #9d9d9d;
+
+@advanced       color       members-category        "Members Category"                      #8e9297;
+@advanced       color       members-activity        "Members Activity"                      #8e9297;
+@advanced       color       channels-category       "Channel Category"                      #8e9297;
+@advanced       color       channels-default        "Channel Name"                          #8e9297;
+@advanced       color       channels-icon           "Channel Name Icon"                     #8e9297;
+@advanced       color       interactive-normal      "Icons Color"                           #8e9297;
+@advanced       color       interactive-hover       "Icons Color Hover"                     #fff;
+@advanced       color       unread-channel          "Unread Channel"                        #fff;
+@advanced       color       muted-channel           "Muted Channel"                         #4f545c;
+@advanced       color       link-color              "Link Color"                            #387bd3;
+@advanced       color       bg-message-hover        "Background message hover"              rgba(0, 0, 0, .3);
+
+@advanced       color       reaction-emoji-bg       "Chat reaction emoji bg"                rgba(0, 0, 0, .2);
+@advanced       color       reaction-emoji-border   "Chat reaction emoji border color"      rgb(0, 66, 255);
+@advanced       color       new-msg-bar             "New message bar"                       #ea0010;
+
+@advanced       color       pop-up                   "Pop-ups bg"                           rgba(0, 0, 0, .2);
+==/UserStyle== */
+
+
+@-moz-document domain("discord.com") {
+/*---------------------------------------- BACKGROUND ----------------------------------------*/
+body {
+    background: url("/*[[backgroundImage]]*/");
+    background-attachment: fixed;
+    background-position:center;
+    background-size: cover;
+    }
+    
+.appMount-3lHmkl {
+    background: rgba(0, 0, 0, .6);
+}
+/*---------------------------------------- DARK & WHITE THEME BACKGROUNDS ----------------------------------------*/
+.theme-dark,
+.theme-light {
+    --background-primary:                                   /*[[bg-primary]]*/;
+    --background-secondary:                                 /*[[bg-secondary]]*/;
+    --background-tertiary:                                  /*[[bg-tertiary]]*/;
+    --background-accent:                                    /*[[bg-accent]]*/;
+    --background-floating:                                  /*[[bg-floating]]*/;
+    --background-secondary-alt:                             /*[[bg-secondary-alt]]*/;
+    --channeltextarea-background:                           /*[[bg-message-bar]]*/;
+
+    --header-primary:                                       /*[[hd-primary]]*/;
+    --header-secondary:                                     /*[[hd-secondary]]*/;
+    --text-normal:                                          /*[[text-normal]]*/;
+    --text-muted:                                           /*[[text-muted]]*/;
+    
+    --channels-default:                                     /*[[channels-default]]*/;
+    --interactive-normal:                                   /*[[interactive-normal]]*/;
+    --interactive-hover:                                    /*[[interactive-hover]]*/;
+    --interactive-active:                                   /*[[unread-channel]]*/;
+    --interactive-muted:                                    /*[[muted-channel]]*/; 
+    --text-link:                                            /*[[link-color]]*/; 
+    --background-message-hover:                             /*[[bg-message-hover]]*/; 
+    
+    --scrollbar-auto-thumb:                                 /*[[scroll-bar]]*/; 
+    --scrollbar-auto-track:                                 /*[[scroll-track]]*/; 
+    --scrollbar-thin-thumb:                                 /*[[scroll-bar]]*/; 
+    --scrollbar-thin-track:                                 /*[[scroll-track]]*/; 
+}
+
+
+/*------------------------------Web Fixes--------------------------------- */
+
+    /* New Message bar*/
+    .isUnread-3Lojb-    {
+        border-color:             /*[[new-msg-bar]]*/; 
+    }
+    .unreadPill-3nEWYM  {
+        background-color:         /*[[new-msg-bar]]*/; 
+    }
+    .unreadPillCapStroke-1nE1Q8 {
+        fill:                     /*[[new-msg-bar]]*/; 
+        stroke:                   /*[[new-msg-bar]]*/; 
+    }
+
+    /* Pop Up Fixes*/
+    .container-2ebMPP   {
+        background-color:         /*[[bg-secondary]]*/;
+        
+    }
+    .layer-2aCOJ3       {
+        background-color:         /*[[bg-secondary]]*/;
+    }
+    
+    /* Members Background*/
+    .container-2o3qEW    {
+        background-color:         /*[[bg-secondary]]*/;
+    }
+    /*Channel Category Icon*/
+    .arrow-2HswgU.icon-3zI3d2 {
+        color:                    /*[[interactive-normal]]*/;
+    }
+    /*Channel Icons*/
+    .icon-2W8DHg    {
+        color:                    /*[[channels-icon]]*/
+    }
+    /*Channel Category*/ 
+    .name-3BUDLf.container-q97qHp {
+        color:                    /*[[channels-category]]*/;
+    }
+    /* Message Reaction Emoji*/
+    .reaction-3vwAF2.reactionMe-1PwQAc {
+        background-color:         /*[[reaction-emoji-bg]]*/; 
+        border-color:             /*[[reaction-emoji-border]]*/; 
+    }
+    /* Message options */
+    .wrapper-2vIMkT {
+        background-color:         /*[[bg-floating]]*/; 
+    }
+    /*Invite Popup*/
+   .theme-dark .root-g14mjS, .theme-dark .footerSeparator-VzAYwb{
+        background-color:        /*[[pop-up]]*/;
+    }
+    .theme-dark .container-2cd8Mz {
+        background-color:        /*[[bg-primary]]*/;
+
+    }
+    /*search or Add friend*/
+    .addFriendInputWrapper-kkoSV9 {
+        background-color:        /*[[bg-message-bar]]*/;
+    }
+    /* Emoji pop-up */
+    .contentWrapper-3vHNP2 {
+        background-color:        /*[[pop-up]]*/;
+    }
+    .searchBar-2M9mRP.container-1SX9VC.medium-13kyaW{
+        background-color:        /*[[bg-message-bar]]*/;
+    }
+    /* Members Category Role */
+    .membersGroup-2eiWxl.container-q97qHp {
+        color:                  /*[[members-category]]*/;
+    }
+    /* Members category status */
+    .activity-2EQDZv {
+        color:                  /*[[members-activity]]*/;
+    }
+    /* Role Name Color */
+    .roleName-2ZJJYR{
+        color:                  #8e9297;
+    }
+    /* Profile Notes */
+    .input-2z42oC {
+        background-color:        /*[[bg-message-bar]]*/;
+    }
+
+
+    
+}
