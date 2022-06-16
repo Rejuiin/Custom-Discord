@@ -21,6 +21,30 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     mem_off     "off"   <<<EOT /* EOT;
     mem_on      "on*"   <<<EOT  EOT;
 }
+@advanced dropdown bor "Borders"      {
+    bor_off     "off"   <<<EOT /* EOT;
+    bor_on      "on*"   <<<EOT  EOT;
+
+}
+@advanced dropdown sep "Separate discord tabs"      {
+    sep_off     "off"   <<<EOT /* EOT;
+    sep_on      "on*"   <<<EOT  EOT; 
+}
+
+
+
+@advanced select _margin "Margin" {
+    "default": "5px",
+    "10px": "10px",
+    "15px": "15px"
+}
+@advanced select _radius "Border radius" {
+    "default": "25px",
+    "0px": "0px",
+    "5px": "5px",
+    "10px": "10px",
+    "15px": "15px"
+}
 
 @advanced       text        backgroundImage         "Background Image Link"                 https://i.imgur.com/iIWiT7D.gif
 
@@ -31,8 +55,12 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
 @advanced       color       bg-floating             "Backgorund Floating"                   rgba(0, 0, 0, .9);
 @advanced       color       bg-secondary-alt        "Backgorund Secondary-ALT(user)"        rgba(0, 0, 0, .3);
 @advanced       color       bg-message-bar          "Backgorund Message bar"                rgba(0, 0, 0, .5);
+@advanced       color       shadow                  "Shadows"                               rgba(4, 232, 255, .83);
 @advanced       color       scroll-bar              "Scroll Bar"                            rgba(28, 28, 28, 1);
 @advanced       color       scroll-track            "Scroll Track"                          rgba(117, 116, 116, .4);
+@advanced       color       border-color            "Border Color"                          rgba(117, 116, 116, .4);
+@advanced       text        border-size             "Border Size"                           1px
+@advanced       text        border-radius           "Border Radius"                         5px
 
 @advanced       color       hd-primary              "Headers Primary"                       #fff;
 @advanced       color       hd-secondary            "Headers Secondary"                     #b9bbbe;
@@ -45,30 +73,66 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
 @advanced       color       channels-default        "Channel Name"                          #8e9297;
 @advanced       color       channels-icon           "Channel Name Icon"                     #8e9297;
 @advanced       color       interactive-normal      "Icons Color"                           #8e9297;
-@advanced       color       interactive-hover       "Icons Color Hover"                     #fff;
+@advanced       color       interactive-hover       "Hover text Color"                      #fff;
 @advanced       color       unread-channel          "Unread Channel"                        #fff;
 @advanced       color       muted-channel           "Muted Channel"                         #4f545c;
 @advanced       color       link-color              "Link Color"                            #387bd3;
 @advanced       color       bg-message-hover        "Background message hover"              rgba(0, 0, 0, .3);
+@advanced       color       bg-hover                "Background hover color"                rgba(79, 85, 94, .6);
+@advanced       color       bg-selected-hover       "Background Selected color"             rgba(79, 85, 94, .6);    
 
 @advanced       color       reaction-emoji-bg       "Chat reaction emoji bg"                rgba(0, 0, 0, .2);
 @advanced       color       reaction-emoji-border   "Chat reaction emoji border color"      rgb(0, 66, 255);
 @advanced       color       new-msg-bar             "New message bar"                       #ea0010;
 
-@advanced       color       pop-up                   "Pop-ups bg"                           rgba(0, 0, 0, .2);
+@advanced       color       pop-up                   "Pop-ups bg"                           rgba(0, 0, 0, .5);
+
+
 ==/UserStyle== */
-@-moz-document domain("discord.com") {
-/*---------------------------------------- BACKGROUND ----------------------------------------*/
-body {
+
+@-moz-document domain("discord.com"), url-prefix("https://discord.com/") {
+
+
+
+/*---------------------------------------- BACKGROUND & LAYOUT----------------------------------------*/
+    
+:root {
     background: url("/*[[backgroundImage]]*/");
     background-attachment: fixed;
     background-position:center;
     background-size: cover;
+
     }
+    /*[[sep]]*/div[class*="sidebar-"], /* sidebar */
+    /*[[sep]]*/div[class*="container-2cd8Mz"], /* right container */
+    /*[[sep]]*/div[class*="chat-"] /* chat */
+    {
+        border-radius: /*[[_radius]]*/!important;
+        margin: /*[[_margin]]*/;
+        transition: .25s ease-in-out;
+    }
+    /*[[sep]]*/div[class*="none"] /* servers */ {
+        background-color: /*[[bg-secondary]]*/; /* bg color replace */
+        border-radius: /*[[_radius]]*/;
+        margin: /*[[_margin]]*/ 0 /*[[_margin]]*/ 0;
+        transition: .25s ease-in-out;
+    }
+    /*[[sep]]*/div[class*="container-1eFt"] /* main */ {
+        padding: /*[[_margin]]*/;
+        box-sizing: border-box;
+    }
+    section[class*="panels-"]:after {
+        color: #fff;
+        position: fixed;
+        bottom: 10px;
+        text-align: center;
+        width: 240px;
+    }
+    
     
 .appMount-3lHmkl {
     background: rgba(0, 0, 0, .6);
-}
+    }
 /*---------------------------------------- DARK & WHITE THEME BACKGROUNDS ----------------------------------------*/
 .theme-dark,
 .theme-light {
@@ -92,13 +156,22 @@ body {
     --interactive-muted:                                    /*[[muted-channel]]*/; 
     --text-link:                                            /*[[link-color]]*/; 
     --background-message-hover:                             /*[[bg-message-hover]]*/; 
+    --background-modifier-hover:                            /*[[bg-hover]]*/; 
+    --background-modifier-active:                           /*[[bg-selected-hover]]*/; 
+    --background-modifier-selected:                         /*[[bg-selected-hover]]*/; 
+    --background-modifier-accent:                           /*[[bg-hover]]*/; 
     
     --scrollbar-auto-thumb:                                 /*[[scroll-bar]]*/; 
     --scrollbar-auto-track:                                 /*[[scroll-track]]*/; 
     --scrollbar-thin-thumb:                                 /*[[scroll-bar]]*/; 
-    --scrollbar-thin-track:                                 /*[[scroll-track]]*/; 
+    --scrollbar-thin-track:                                 /*[[scroll-track]]*/;
+    --elevation-low: transparent;
+	--elevation-high: 0 1px 5px                             /*[[shadow]]*/;
+    
+    
 }
-
+    
+  
 
 /*------------------------------Web Fixes--------------------------------- */
 
@@ -184,7 +257,7 @@ body {
         background-color:        /*[[bg-message-bar]]*/;
     }
 
-
+    
 /*------------------------------Sidebar Hover--------------------------------- */
     /*Channels Animation*/
     /*[[chan]]*/[class|=sidebar]        {
@@ -214,9 +287,61 @@ body {
         opacity: 1;
         width: 240px !important;
     }
+    
+    /*borders*/
+    /*[[bor]]*/.sidebar-1tnWFu {
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
+    /*[[bor]]*/.members-3WRCEx {
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
+    /*[[bor]]*/.panels-3wFtMD {
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
+    /*[[bor]]*/.wrapper-1_HaEi  {
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
+    /*[[bor]]*/.container-ZMc96U{
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
+    /*[[bor]]*/.container-1-ERn5{
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
+    /*[[bor]]*/.form-3gdLxP{
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    padding-top: 6px;
+    }
+    /*[[bor]]*/.content-1jQy2l{
+    border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
+    }
 /*------------------------------Tool Bar Hover--------------------------------- */
     /*hover == false*/
    /*[[tool]]*/ [class^="toolbar-"]         {
+        opacity: 1;
         max-width: 40px;
         transition: max-width 1.5s;
         -webkit-transition: max-width 1.5s;
@@ -226,20 +351,24 @@ body {
     }
 
     [class^="toolbar-"]::before {
-        content: "︙";
+        opacity: 1;
+        content: "<<<";
         font-size: 24px;
         margin: 0 8px;
     }
     /*hover == true*/
     [class^="toolbar-"]:hover   {
+        opacity: 1;
         max-width: 100vw;
     }
 
     [class^="toolbar-"]:hover::before   {
-        content: "<";
+        opacity: 1;
+        content: ">>>";
         font-size: 24px;
         margin: 0 8px;
-     }
+    }
+
 }
-    
+ 
     
