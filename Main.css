@@ -21,6 +21,20 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     mem_off     "off"   <<<EOT /* EOT;
     mem_on      "on*"   <<<EOT  EOT;
 }
+@advanced select _hover_distance "Hover distance" {
+    "5px": "5px",
+    "10px": "10px",
+    "15px": "15px",
+    "20px": "20px",
+    "25px": "25px",
+    "30px": "30px",
+    "35px": "35px",
+    "40px": "40px",
+}
+@advanced dropdown chat "Chat bar animation"      {
+    chat_off     "off"   <<<EOT /* EOT;
+    chat_on      "on*"   <<<EOT  EOT;
+}
 @advanced dropdown bor "Borders"      {
     bor_off     "off"   <<<EOT /* EOT;
     bor_on      "on*"   <<<EOT  EOT;
@@ -46,16 +60,17 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     "15px": "15px"
 }
 
-@advanced       text        backgroundImage         "Background Image Link"                 https://i.imgur.com/iIWiT7D.gif
+@advanced       text        backgroundImage         "Background Image/GIF Link"             https://i.imgur.com/iIWiT7D.gif
 
 @advanced       color       bg-primary              "Backgorund Primary"                    rgba(0, 0, 0, .1);
 @advanced       color       bg-secondary            "Backgorund Secondary"                  rgba(0, 0, 0, .1);
-@advanced       color       bg-tertiary             "Backgorund Tertiary"                   rgba(0, 0, 0, .1);
+@advanced       color       bg-tertiary             "Backgorund Tertiary -------------- (  .2  for images with white bg)"     rgba(0, 0, 0, .1);
 @advanced       color       bg-accent               "Backgorund Accent"                     rgba(40, 40, 40, 1);
-@advanced       color       bg-floating             "Backgorund Floating"                   rgba(0, 0, 0, .9);
+@advanced       color       bg-floating             "Backgorund Floating"                   rgba(21, 21, 21, .5);
+@advanced       color       pop-up                  "Pop-ups bg (Similar to floating)"      rgba(21, 21, 21, .5);
 @advanced       color       bg-secondary-alt        "Backgorund Secondary-ALT(user)"        rgba(0, 0, 0, .3);
 @advanced       color       bg-message-bar          "Backgorund Message bar"                rgba(45, 45, 45, .7);
-@advanced       color       shadow                  "Shadows"                               rgba(4, 232, 255, .83);
+@advanced       color       shadow                  "Shadows"                               rgba(4, 232, 255, 1);
 @advanced       color       scroll-bar              "Scroll Bar"                            rgba(28, 28, 28, 1);
 @advanced       color       scroll-track            "Scroll Track"                          rgba(117, 116, 116, .4);
 @advanced       color       border-color            "Border Color"                          rgba(117, 116, 116, .4);
@@ -85,7 +100,7 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
 @advanced       color       reaction-emoji-border   "Chat reaction emoji border color"      rgb(0, 66, 255);
 @advanced       color       new-msg-bar             "New message bar"                       #ea0010;
 
-@advanced       color       pop-up                   "Pop-ups bg"                           rgba(0, 0, 0, .5);
+
 
 
 ==/UserStyle== */
@@ -297,12 +312,16 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     .role-2TIOKu{
         background-color:         /*[[bg-accent]]*/;   
     }
+    /* fixed vc background */
+    .callContainer-HtHELf{
+        background-color:         /*[[bg-tertiary]]*/; 
+    }
     
 /*------------------------------Sidebar Hover--------------------------------- */
     /*Channels Animation*/
     /*[[chan]]*/[class|=sidebar]        {
         opacity: 0;
-        width: 15px !important;
+        width: /*[[_hover_distance]]*/ !important;
         -webkit-transition: opacity 0.3s ease-in-out, width 0.5s !important;
         -moz-transition: opacity 0.3s ease-in-out !important;
         -ms-transition: opacity 0.3s ease-in-out !important;
@@ -314,16 +333,16 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     }
     /*Members Animation*/
 
-    /*[[mem]]*/[class|=membersWrap]     {
+    /*[[mem]]*/[class|=container-2o3qEW]     {
         opacity: 0;
-        width: 10px;
-        min-width: 40px;
+        width: /*[[_hover_distance]]*/ !important;
+        min-width: 10px;
         -webkit-transition: opacity 0.3s ease-in-out, width 0.5s !important;
         -moz-transition: opacity 0.3s ease-in-out !important;
         -ms-transition: opacity 0.3s ease-in-out !important;
         -o-transition: opacity 0.3s ease-in-out !important;
     }
-    [class|=membersWrap]:hover {
+    [class|=container-2o3qEW]:hover {
         opacity: 1;
         width: 240px !important;
     }
@@ -378,21 +397,37 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     border-bottom:  /*[[border-size]]*/       solid      /*[[border-color]]*/;
     border-top:     /*[[border-size]]*/       solid      /*[[border-color]]*/;
     }
-    
-/*------------------------------Tool Bar Hover--------------------------------- */
-    /*hover == false*/
-   /*[[tool]]*/ [class^="toolbar-"]         {
+/*------------------------------Chat Bar Hover Amimation--------------------------------- */
+    /*[[chat]]*/[class|=form-3gdLxP]        {
+        opacity: 0;
+        position: relative !important;
+        -webkit-transition: opacity 0.3s ease-in-out, width 0.5s !important;
+        -moz-transition: opacity 0.3s ease-in-out !important;
+        -ms-transition: opacity 0.3s ease-in-out !important;
+        -o-transition: opacity 0.3s ease-in-out !important;
+    }
+    /*[[chat]]*/[class|=form-3gdLxP]:hover  {
         opacity: 1;
-        max-width: 40px;
-        transition: max-width 1.5s;
-        -webkit-transition: max-width 1.5s;
-        -moz-transition: max-width 1.5s;
-        -o-transition: max-width 1.5s;
+        position: relative !important;
+    }
+   
+    
+/*------------------------------Tool Bar Hover Animation--------------------------------- */
+
+    
+    /*hover == false*/
+   /*[[tool]]*/ [class^="toolbar-"] {
+        opacity: 1;
+        max-width: 100px;
+        -webkit-transition: opacity 0.3s ease-in-out, width 2.5s !important;
+        -moz-transition: opacity 0.3s ease-in-out !important;
+        -ms-transition: opacity 0.3s ease-in-out !important;
+        -o-transition: opacity 0.3s ease-in-out !important;
         height: 100%;
     }
 
     [class^="toolbar-"]::before {
-        opacity: 1;
+        padding-right: 100px;
         content: "<<<";
         font-size: 24px;
         margin: 0 8px;
@@ -401,6 +436,11 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     [class^="toolbar-"]:hover   {
         opacity: 1;
         max-width: 100vw;
+        -webkit-transition: opacity 0.3s ease-in-out, width 2.5s !important;
+        -moz-transition: opacity 0.3s ease-in-out !important;
+        -ms-transition: opacity 0.3s ease-in-out !important;
+        -o-transition: opacity 0.3s ease-in-out !important;
+        height: 100%;
     }
 
     [class^="toolbar-"]:hover::before   {
