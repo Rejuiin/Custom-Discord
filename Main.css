@@ -44,7 +44,10 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     sep_off     "off"   <<<EOT /* EOT;
     sep_on      "on*"   <<<EOT  EOT; 
 }
-
+@advanced dropdown but "Buttons color"      {
+    mem_off     "off"   <<<EOT /* EOT;
+    mem_on      "on*"   <<<EOT  EOT;
+}
 
 
 @advanced select _margin "Margin" {
@@ -53,11 +56,11 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     "15px": "15px"
 }
 @advanced select _radius "Border radius" {
-    "default": "25px",
     "0px": "0px",
     "5px": "5px",
     "10px": "10px",
-    "15px": "15px"
+    "15px": "15px",
+    "20px": "20px"
 }
 
 @advanced       text        backgroundImage         "Background Image/GIF Link"             https://i.imgur.com/iIWiT7D.gif
@@ -66,39 +69,40 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
 @advanced       color       bg-secondary            "Backgorund Secondary"                  rgba(0, 0, 0, .1);
 @advanced       color       bg-tertiary             "Backgorund Tertiary -------------- (  .2  for images with white bg)"     rgba(0, 0, 0, .1);
 @advanced       color       bg-accent               "Backgorund Accent"                     rgba(40, 40, 40, 1);
-@advanced       color       bg-floating             "Backgorund Floating"                   rgba(21, 21, 21, .5);
-@advanced       color       pop-up                  "Pop-ups bg (Similar to floating)"      rgba(21, 21, 21, .5);
+@advanced       color       bg-floating             "Backgorund Floating"                   rgba(0, 0, 0, .3);
+@advanced       color       pop-up                  "Pop-ups bg (Similar to floating)"      rgba(0, 0, 0, .3);
 @advanced       color       bg-secondary-alt        "Backgorund Secondary-ALT(user)"        rgba(0, 0, 0, .3);
 @advanced       color       bg-message-bar          "Backgorund Message bar"                rgba(45, 45, 45, .7);
 @advanced       color       shadow                  "Shadows"                               rgba(4, 232, 255, 1);
+@advanced       color       bg-buttons              "Buttons Background"                    rgba(45, 45, 45, .7);
 @advanced       color       scroll-bar              "Scroll Bar"                            rgba(28, 28, 28, 1);
 @advanced       color       scroll-track            "Scroll Track"                          rgba(117, 116, 116, .4);
 @advanced       color       border-color            "Border Color"                          rgba(117, 116, 116, .4);
 @advanced       text        border-size             "Border Size"                           1px
 @advanced       text        border-radius           "Border Radius"                         5px
 
-@advanced       color       hd-primary              "Headers Primary"                       #fff;
-@advanced       color       hd-secondary            "Headers Secondary"                     #b9bbbe;
-@advanced       color       text-normal             "Text Normal"                           #dcddde;
-@advanced       color       text-muted              "Text Muted"                            #9d9d9d;
+@advanced       color       hd-primary              "Headers Primary"                       rgb(255, 255, 255);
+@advanced       color       hd-secondary            "Headers Secondary"                     rgb(185, 187, 190);
+@advanced       color       text-normal             "Text Normal"                           rgb(220, 221, 222);
+@advanced       color       text-muted              "Text Muted"                            rgb(157, 157, 157);
 
-@advanced       color       members-category        "Members Category"                      #8e9297;
-@advanced       color       members-activity        "Members Activity"                      #8e9297;
-@advanced       color       channels-category       "Channel Category"                      #8e9297;
-@advanced       color       channels-default        "Channel Name"                          #8e9297;
-@advanced       color       channels-icon           "Channel Name Icon"                     #8e9297;
-@advanced       color       interactive-normal      "Icons Color"                           #8e9297;
-@advanced       color       interactive-hover       "Hover text Color"                      #fff;
-@advanced       color       unread-channel          "Unread Channel"                        #fff;
-@advanced       color       muted-channel           "Muted Channel"                         #4f545c;
-@advanced       color       link-color              "Link Color"                            #387bd3;
+@advanced       color       members-category        "Members Category"                      rgb(142, 146, 151);
+@advanced       color       members-activity        "Members Activity"                      rgb(142, 146, 151);
+@advanced       color       channels-category       "Channel Category"                      rgb(142, 146, 151);
+@advanced       color       channels-default        "Channel Name"                          rgb(142, 146, 151);
+@advanced       color       channels-icon           "Channel Name Icon"                     rgb(142, 146, 151);
+@advanced       color       interactive-normal      "Icons Color"                           rgb(142, 146, 151);
+@advanced       color       interactive-hover       "Hover text Color"                      rgb(255, 255, 255);
+@advanced       color       unread-channel          "Unread Channel"                        rgb(255, 255, 255);
+@advanced       color       muted-channel           "Muted Channel"                         rgb(79, 84, 92);
+@advanced       color       link-color              "Link Color"                            rgb(56, 123, 211);
 @advanced       color       bg-message-hover        "Background message hover"              rgba(0, 0, 0, .3);
 @advanced       color       bg-hover                "Background hover color"                rgba(79, 85, 94, .6);
 @advanced       color       bg-selected-hover       "Background Selected color"             rgba(79, 85, 94, .6);    
 
 @advanced       color       reaction-emoji-bg       "Chat reaction emoji bg"                rgba(0, 0, 0, .2);
 @advanced       color       reaction-emoji-border   "Chat reaction emoji border color"      rgb(0, 66, 255);
-@advanced       color       new-msg-bar             "New message bar"                       #ea0010;
+@advanced       color       new-msg-bar             "New message bar"                       rgb(234, 0, 16);
 
 
 
@@ -111,13 +115,15 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
 
 /*---------------------------------------- BACKGROUND & LAYOUT----------------------------------------*/
     
-:root {
+body {
     background: url("/*[[backgroundImage]]*/");
     background-attachment: fixed;
-    background-position:center;
+    background-position: center;
     background-size: cover;
-
-    }
+}
+.appMount-3lHmkl {
+    background: rgba(0, 0, 0, .1);
+}
     /*[[sep]]*/div[class*="sidebar-"], /* sidebar */
     /*[[sep]]*/div[class*="container-2cd8Mz"], /* right container */
     /*[[sep]]*/div[class*="chat-"] /* chat */
@@ -241,7 +247,7 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
         background-color:        /*[[pop-up]]*/;
     }
     .theme-dark .container-2cd8Mz {
-        background-color:        /*[[bg-primary]]*/;
+        background-color:        /*[[pop-up]]*/;
 
     }
     /*search or Add friend*/
@@ -316,8 +322,33 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
     .callContainer-HtHELf{
         background-color:         /*[[bg-tertiary]]*/; 
     }
+    /*[[but]]*/.button-f2h6uQ {
+        background-color: /*[[bg-buttons]]*/;
+    }
     
-/*------------------------------Sidebar Hover--------------------------------- */
+/*------------------------------gradient button---------------------------------*/
+/*    .button-f2h6uQ {
+        background-image: linear-gradient(to right,
+    /* Base gradient stops */
+/*    rgba(255, 0, 0, 1),rgb(9, 255, 0, 1),rgba(4, 0, 255, 1),
+    /* Repeat your base gradient stops */
+/*    rgba(255, 0, 0, 1),rgb(9, 255, 0, 1),rgba(4, 0, 255, 1),
+    /* Repeat your first gradient stop */
+/*    rgba(255, 0, 0, 1));
+  
+        background-size: 200% 200%;
+        animation: rainbow 5s linear infinite;
+        border-radius: 5px;
+        color: #0000006e;
+    }
+
+    @keyframes rainbow {
+        0% { background-position: 100% 100% }
+        100% { background-position: 0% 0% }
+    }
+
+    
+/*------------------------------Sidebar Hover---------------------------------*/
     /*Channels Animation*/
     /*[[chan]]*/[class|=sidebar]        {
         opacity: 0;
@@ -346,8 +377,7 @@ https://media.discordapp.net/attachments/880439497211408384/986471746515378196/9
         opacity: 1;
         width: 240px !important;
     }
-    
-    /*borders*/
+/*--------------------------------borders-----------------------------------------*/
     /*[[bor]]*/.sidebar-1tnWFu {
     border-right:   /*[[border-size]]*/       solid      /*[[border-color]]*/;
     border-left:    /*[[border-size]]*/       solid      /*[[border-color]]*/;
